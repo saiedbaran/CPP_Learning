@@ -4,14 +4,17 @@
 class FbullCowGame
 {
 public:
+	FbullCowGame(); // constructor
+
+	int GetMaxTries() const;
+	int GetCurrentTry() const;
+	bool IsGameWon() const;
+
 	void Reset();
-	int GetMaxTries();
-	int GetCurrentTry();
-	bool IsGameWon();
 	bool checkGuessValidity(std::string); //TODO make a more rich return value.
 
 
 private:
-	int MyCurrentTry;
 	int MyMaxTry;
+	int MyCurrentTry;
 };
