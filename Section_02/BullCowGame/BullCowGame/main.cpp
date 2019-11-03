@@ -3,15 +3,18 @@
 #include "main.h"
 #include "FBullCowGame.h"
 
+using FText = std::string;
+using int32 = int;
+
 void GetGuess();
 void PrintIntro();
 void PrintGuess();
 bool PlayAgain();
 void PlayGame();
 
-constexpr int WORD_LENGTH = 5;
-constexpr int Number_Of_Turns = 5;
-std::string Guess = "";
+constexpr int32 WORD_LENGTH = 5;
+constexpr int32 Number_Of_Turns = 5;
+FText Guess = "";
 
 FbullCowGame BCGame; // Instantiate a new game
 
@@ -33,14 +36,19 @@ int main()
 void PlayGame()
 {
 	BCGame.Reset();
-	int MaxTries = BCGame.GetMaxTries();
+	int32 MaxTries = BCGame.GetMaxTries();
 	std::cout << "MaxTries: " << MaxTries << std::endl;
-	for (int i = 0; i < MaxTries; i++)
+	for (int32 i = 0; i < MaxTries; i++)
 	{
 		GetGuess();
 		PrintGuess();
+		FBullCowCount BullCowCount = BCGame.SubmitGuess(Guess);
+		std::cout << "Bulls = " << BullCowCount.Bulls;
+		std::cout << " Cows = " << BullCowCount.Cows;
+		std::cout << std::endl;
 	}
 
+	//FBullCowCount bullCowCount = BCGame.SubmitGuess();
 	return;
 }
 
@@ -56,8 +64,8 @@ void PrintIntro()
 // Get input from User
 void GetGuess()
 {
-	int CurrentTry = BCGame.GetCurrentTry();
-	std::string inputGuess;
+	int32 CurrentTry = BCGame.GetCurrentTry();
+	FText inputGuess;
 	std::cout << "Try " << CurrentTry << "." << " Please Enter your guess: ";
 	std::getline(std::cin, inputGuess);
 	Guess = inputGuess;
@@ -75,7 +83,7 @@ void PrintGuess()
 bool PlayAgain()
 {
 	std::cout << "Do you want to play again?(Y/N)";
-	std::string Responce = "";
+	FText Responce = "";
 	std::getline(std::cin, Responce);
 
 	if (Responce[0] == 'y' || Responce[0] == 'Y')
