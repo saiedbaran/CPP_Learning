@@ -30,14 +30,31 @@ int32 FbullCowGame::GetCurrentTry() const
 	return MyCurrentTry;
 }
 
+int32 FbullCowGame::GetHiddenWordLength() const
+{
+	return MyHiddenWord.length();
+}
+
 bool FbullCowGame::IsGameWon() const
 {
 	return false;
 }
 
-bool FbullCowGame::checkGuessValidity(FString)
+EGeussStatus FbullCowGame::checkGuessValidity(FString)
 {
-	return false;
+	if (false)
+	{
+		return EGeussStatus::Not_Isogram;
+	}
+	else if (false)
+	{
+		return EGeussStatus::Not_LowerCase;
+	}
+	else if (false)
+	{
+		return EGeussStatus::Wrong_Length;
+	}
+	else { return EGeussStatus::OK; }
 }
 
 FBullCowCount FbullCowGame::SubmitGuess(FString Guess)
