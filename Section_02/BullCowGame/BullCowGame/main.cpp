@@ -11,6 +11,7 @@ void PrintIntro();
 void PrintGuess();
 bool PlayAgain();
 void PlayGame();
+void PrintGameSummary();
 
 constexpr int32 WORD_LENGTH = 5;
 constexpr int32 Number_Of_Turns = 5;
@@ -42,15 +43,29 @@ void PlayGame()
 	{
 		GetValidGuess();
 		PrintGuess();
-
+		
 		FBullCowCount BullCowCount = BCGame.SubmitValidGuess(Guess);
 		std::cout << "Bulls = " << BullCowCount.Bulls;
 		std::cout << " Cows = " << BullCowCount.Cows;
 		std::cout << std::endl;
 	}
 
+	PrintGameSummary();
+
 	//FBullCowCount bullCowCount = BCGame.SubmitGuess();
 	return;
+}
+
+void PrintGameSummary()
+{
+	if (BCGame.IsGameWon())
+	{
+		std::cout << "\nCongrats!!! You WON!!!\n" << std::endl;
+	}
+	else
+	{
+		std::cout << "\nBad Luck... Maybe Next time!!!\n" << std::endl;
+	}
 }
 
 // Introduce the Game

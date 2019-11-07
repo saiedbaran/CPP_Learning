@@ -43,7 +43,7 @@ bool FbullCowGame::IsGameWon() const
 
 EGeussStatus FbullCowGame::checkGuessValidity(FString Guess)
 {
-	if (false)
+	if (!IsIsogram(Guess))
 	{
 		return EGeussStatus::Not_Isogram;
 	}
@@ -95,4 +95,14 @@ FBullCowCount FbullCowGame::SubmitValidGuess(FString Guess)
 		bGameIsWon = false;
 	}
 	return BullCowGame;
+}
+
+bool FbullCowGame::IsIsogram(FString Guess) const
+{
+	TMap<char, bool> mGuess;
+	for (int32 i = 0; i < Guess.length(); i++)
+	{
+
+	}
+	return true;
 }
